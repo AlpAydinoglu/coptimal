@@ -1,4 +1,4 @@
-Here, you can find the code for the conference paper 'Real-Time Multi-Contact Model Predictive Control via ADMM'. Code is currently being cleared up and being optimized. 
+Here, you can find the code for the paper 'Real-Time Multi-Contact Model Predictive Control via ADMM'. Code is currently being cleared up and being optimized. 
 
 # C3: Consensus Complementarity Control
 Submitted to ICRA2022
