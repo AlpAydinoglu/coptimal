@@ -130,13 +130,13 @@ for i in range(system_iter):
     
     q = E @ x[:, [i]] + H @ u + c
     
-    li = save_z
-    sub = li[4::7]
-    plt.plot(sub)
-    plt.legend((['z1'],['z3'],['z10']))
-    plt.show()
-    mdic = {"sub": sub, "li": li }
-    scipy.io.savemat("sub.mat",  mdic)
+    # li = save_z
+    # sub = li[4::7]
+    # plt.plot(sub)
+    # plt.legend((['z1'],['z3'],['z10']))
+    # plt.show()
+    # mdic = {"sub": sub, "li": li }
+    # scipy.io.savemat("sub.mat",  mdic)
     
     sol_lcp = lemkelcp(F,q)
     lam[:,[i]] = np.reshape( sol_lcp[0], (m,1))

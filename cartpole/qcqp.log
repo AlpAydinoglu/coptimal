@@ -1,0 +1,28 @@
+WARNING:pyomo.opt:Failed to create solver with name 'path':
+Failed to set executable for solver path. File with name=C:\Users\alp1a\OneDrive\Masaüstü\coptimal\lib\pathampl either does not exist or it is not executable. To skip this validation, call set_executable with validate=False.
+Traceback (most recent call last):
+  File "C:\Users\alp1a\anaconda3\lib\site-packages\pyomo\opt\base\solvers.py", line 152, in __call__
+    opt = self._cls[_name](**kwds)
+  File "C:\Users\alp1a\anaconda3\lib\site-packages\pyomo\mpec\plugins\pathampl.py", line 30, in __init__
+    ASL.__init__(self, **kwds)
+  File "C:\Users\alp1a\anaconda3\lib\site-packages\pyomo\solvers\plugins\solvers\ASL.py", line 43, in __init__
+    SystemCallSolver.__init__(self, **kwds)
+  File "C:\Users\alp1a\anaconda3\lib\site-packages\pyomo\opt\solver\shellcmd.py", line 55, in __init__
+    self.set_executable(name=executable, validate=validate)
+  File "C:\Users\alp1a\anaconda3\lib\site-packages\pyomo\opt\solver\shellcmd.py", line 105, in set_executable
+    % (self.name, name))
+ValueError: Failed to set executable for solver path. File with name=C:\Users\alp1a\OneDrive\Masaüstü\coptimal\lib\pathampl either does not exist or it is not executable. To skip this validation, call set_executable with validate=False.
+WARNING:pyomo.opt:Failed to create solver with name 'path':
+Failed to set executable for solver path. File with name=C:\Users\alp1a\OneDrive\Masaüstü\coptimal\lib\pathampl either does not exist or it is not executable. To skip this validation, call set_executable with validate=False.
+Traceback (most recent call last):
+  File "C:\Users\alp1a\anaconda3\lib\site-packages\pyomo\opt\base\solvers.py", line 152, in __call__
+    opt = self._cls[_name](**kwds)
+  File "C:\Users\alp1a\anaconda3\lib\site-packages\pyomo\mpec\plugins\pathampl.py", line 30, in __init__
+    ASL.__init__(self, **kwds)
+  File "C:\Users\alp1a\anaconda3\lib\site-packages\pyomo\solvers\plugins\solvers\ASL.py", line 43, in __init__
+    SystemCallSolver.__init__(self, **kwds)
+  File "C:\Users\alp1a\anaconda3\lib\site-packages\pyomo\opt\solver\shellcmd.py", line 55, in __init__
+    self.set_executable(name=executable, validate=validate)
+  File "C:\Users\alp1a\anaconda3\lib\site-packages\pyomo\opt\solver\shellcmd.py", line 105, in set_executable
+    % (self.name, name))
+ValueError: Failed to set executable for solver path. File with name=C:\Users\alp1a\OneDrive\Masaüstü\coptimal\lib\pathampl either does not exist or it is not executable. To skip this validation, call set_executable with validate=False.
