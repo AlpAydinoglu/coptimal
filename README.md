@@ -1,4 +1,4 @@
-Here, you can find the code for the conference paper 'Real-Time Multi-Contact Model Predictive Control via ADMM' that was presented in ICRA2022 and also the code for the extended version of the paper that is being submitted in T-RO (in-progress, will be up soon).
+Here, you can find the code for the conference paper 'Real-Time Multi-Contact Model Predictive Control via ADMM' that was presented in ICRA2022 and also the code for the extended version of the paper that is being submitted to T-RO (in-progress, will be up soon).
 
 # Extended Version
 (soon) Submitted to T-RO
