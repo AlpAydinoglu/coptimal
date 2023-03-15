@@ -1,4 +1,4 @@
-Here, you can find the code for the conference paper 'Contact-Aware Controller design for Coplementarity Systems' that was presented in ICRA2020 and also the code for the extended version of the paper that is being submitted in T-RO (in-progress, will be up soon).
+Here, you can find the code for the conference paper 'Real-Time Multi-Contact Model Predictive Control via ADMM' that was presented in ICRA2022 and also the code for the extended version of the paper that is being submitted in T-RO (in-progress, will be up soon).
 
 # ICRA2020 Conference Paper
 # Real-Time Multi-Contact Model Predictive Control via ADMM
