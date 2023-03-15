@@ -7,7 +7,7 @@ The code is written in C++ and is at least 2-3x faster than the conference versi
 
 # ICRA2022 Conference Paper
 # Real-Time Multi-Contact Model Predictive Control via ADMM
-Presented in ICRA2022 (Related code (python) is under the folder "Conference (ICRA2022)"
+Presented in ICRA2022 (Related code (python) can be found in the folder "Conference (ICRA2022)")
 
 arXiv link: https://arxiv.org/pdf/2109.07076.pdf
 
