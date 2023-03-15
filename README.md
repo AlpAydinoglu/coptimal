@@ -1,12 +1,10 @@
-Here, you can find the code for the paper 'Real-Time Multi-Contact Model Predictive Control via ADMM'. Code is currently being cleared up and optimized. 
+Here, you can find the code for the conference paper 'Contact-Aware Controller design for Coplementarity Systems' that was presented in ICRA2020 and also the code for the extended version of the paper that is being submitted in T-RO (in-progress, will be up soon).
 
-# C3: Consensus Complementarity Control
-Submitted to ICRA2022
+# ICRA2020 Conference Paper
+# Real-Time Multi-Contact Model Predictive Control via ADMM
+Presented in ICRA2022 (Related code (python) is under the folder "Conference (ICRA2022)"
 
-## Examples
+arXiv link: https://arxiv.org/pdf/2109.07076.pdf
 
-`cartpole`: Cartpole with soft walls
+Video: https://youtu.be/HyEv-pK9Qfs
 
-`finger_gaiting_parallel`: Finger gaiting
-
-`traj_opt_parallel`: Pivoting
