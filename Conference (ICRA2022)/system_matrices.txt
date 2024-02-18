@@ -1,5 +1,38 @@
 # This file contains the systems for finger gaiting and pivoting examples.
 
+# Cartpole:
+# Params
+# Timestep
+    Ts
+# Gravity
+    g
+# Mass for pole and cart, length for pole and center of mass
+    mp
+    mc
+    len_p
+    len_com
+# Distance of walls
+    d1
+    d2
+# Stiffness of spring contact model
+    ks
+
+# System matrices for continuous time
+Ac = [[0, 0, 1, 0], [0, 0, 0, 1], [0, g*mp/mc, 0, 0], [0, g*(mc+mp)/(len_com*mc), 0, 0]]
+Bc = [[0],[0],[1/mc],[1/(len_com*mc)]]
+Dc = [[0,0], [0,0], [(-1/mc) + (len_p/(mc*len_com)), (1/mc) - (len_p/(mc*len_com)) ], [(-1 / (mc*len_com) ) + (len_p*(mc+mp)) / (mc*mp*len_com*len_com)  , -((-1 / (mc*len_com) ) + (len_p*(mc+mp)) / (mc*mp*len_com*len_com))    ]]
+dc = np.zeros((4,1))
+
+# Discretized version
+A = np.eye(n) + Ts * Ac
+B = Ts*Bc
+D = Ts*Dc
+d = Ts*dc
+E = [[-1, len_p, 0, 0], [1, -len_p, 0, 0 ]]
+F = 1/ks * np.eye(2)
+c = [[d1], [-d2]]
+H = np.zeros((2,1))
+
 # Finger gaiting:
 # Params
 # Timestep
