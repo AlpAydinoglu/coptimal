@@ -1,0 +1,59 @@
+# This file contains the systems for finger gaiting and pivoting examples.
+
+# Finger gaiting:
+# Params
+# Timestep
+    h
+# Coefficient of friction
+    mu
+# Gravity
+    g
+
+# System matrices
+    A = [[1,h,0,0,0,0],[0, 1, 0, 0, 0, 0], [0, 0, 1, h, 0, 0 ], [0, 0, 0, 1, 0, 0], [0, 0, 0, 0, 1, h], [0, 0, 0, 0, 0, 1]]
+    B = [[0,0,0,0], [0, 0, 0, 0], [h*h, 0, 0, 0], [h, 0, 0, 0], [0, h*h, 0, 0], [0, h, 0, 0]]
+    D = [[0, h*h, -h*h, 0, h*h, -h*h], [0, h, -h, 0, h, -h], [0, -h*h, h*h, 0, 0, 0], [0, -h, h, 0, 0, 0], [0, 0, 0, 0, -h*h, h*h], [0, 0, 0, 0, -h, h]]
+    E = [[0, 0, 0, 0, 0, 0], [0, 1, 0, -1, 0, 0], [0, -1, 0, 1, 0, 0], [0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, -1], [0, -1, 0, 0, 0, 1]]
+    F = [[0, -1, -1, 0, 0, 0], [1, 2*h, -2*h, 0, h, -h], [1, -2*h, 2*h, 0, -h, h], [0, 0, 0, 0, -1,-1], [0, h, -h, 1, 2*h, -2*h], [0, -h, h, 1, -2*h, 2*h]]
+    c = [[0],[-h*g], [h*g], [0], [-h*g], [h*g]]
+    d = [[-g*h*h],[-g*h],[0],[0],[0],[0]]
+    H = [[0, 0, mu, 0], [-h, 0, 0, 0], [h, 0, 0, 0], [0, 0, 0, mu], [0, -h, 0, 0], [0, h, 0, 0]]
+
+# Pivoting:
+# Params
+# Timestep 
+    dt
+# Coefficient of friction
+    mu1
+    mu2
+    mu3
+# Gravity
+    g
+# Dimensions
+    h
+    w
+# Note: Mass is hardcoded to be 1
+    
+# Calculations based on dimensions and current state
+    rt = np.sqrt(h*h + w*w)
+    rt = -rt
+    sin = np.sin(x[4])
+    sin = sin[0]
+    cos = np.cos(x[4])
+    cos = cos[0]
+    z = w*sin - h*cos
+    x5 = x[6]
+    x5 = x5[0]
+    x7 = x[8]
+    x7 = x7[0]
+
+# System matrices
+    A = [[1,dt,0,0,0,0,0,0,0,0],[0,1,0,0,0,0,0,0,0,0],[0,0,1,dt,0,0,0,0,0,0],[0,0,0,1,0,0,0,0,0,0],[0,0,0,0,1,dt,0,0,0,0],[0,0,0,0,0,1,0,0,0,0],[0,0,0,0,0,0,1,dt,0,0],[0,0,0,0,0,0,0,1,0,0],[0,0,0,0,0,0,0,0,1,dt],[0,0,0,0,0,0,0,0,0,1]]
+    B = [[0,0,-dt*dt*cos,dt*dt*sin], [0,0,-dt*cos, dt*sin], [0,0,dt*dt*sin, dt*dt*cos],[0,0,dt*sin,dt*cos],[0,0,-dt*dt*x[6], dt*dt*x[8]], [0,0,-dt*x[6], dt*x[8]],[dt*dt,0,0,0],[dt,0,0,0],[0,dt*dt,0,0],[0,dt,0,0]]
+    D = [[0, dt*dt*sin, -dt*dt*sin, 0, -cos*dt*dt, dt*dt*cos,0,dt*dt,-dt*dt,0],[0, dt*sin, -dt*sin, 0, -cos*dt, dt*cos,0,dt,-dt,0],   [0,dt*dt*cos,-dt*dt*cos,0,dt*dt*sin,-dt*dt*sin,0,0,0,dt*dt], [0,dt*cos,-dt*cos,0,dt*dt*sin,-dt*sin,0,0,0,dt]   ,   [0, -dt*dt*h, dt*dt*h,0,dt*dt*w,-dt*dt*w,0,-dt*dt*cos*w-dt*dt*sin*h,dt*dt*cos*w+dt*dt*sin*h,dt*dt*sin*w-h*cos*dt*dt]  , [0, -dt*h, dt*h,0,dt*w,-dt*w,0,-dt*cos*w-dt*sin*h,dt*cos*w+dt*sin*h,dt*sin*w-h*cos*dt] , [0, -dt*dt, dt*dt,0,0,0,0,0,0,0]    ,   [0, -dt, dt,0,0,0,0,0,0,0]    ,   [0,0,0,0,-dt*dt,dt*dt,0,0,0,0]   ,   [0,0,0,0,-dt,dt,0,0,0,0]]
+    d = [[0],[0],[-dt*dt*g],[-dt*g],[0],[0],[0],[0],[0],[0]]
+    E = [[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,-1,0,0],[0,0,0,0,0,0,0,1,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,-1],[0,0,0,0,0,0,0,0,0,1],[0,0,0,0,0,0,0,0,0,0],np.negative([0,1,0,0,0,rt,0,0,0,0]),np.negative([0,-1,0,0,0,-rt,0,0,0,0]),[0,0,1,dt,-h*sin+w*cos+z,z*dt,0,0,0,0]]
+    c = [[0],[0],[0],[0],[0],[0],[0],[0],[0],[-h*cos-w*sin-dt*dt*g]]
+    F = [[0,-1,-1,0,0,0,0,0,0,0],[1,dt,-dt,0,0,0,0,0,0,0],[1,-dt,dt,0,0,0,0,0,0,0],[0,0,0,0,-1,-1,0,0,0,0],[0,0,0,1,dt,-dt,0,0,0,0],[0,0,0,1,-dt,dt,0,0,0,0],[0,0,0,0,0,0,0,-1,-1,mu3],np.negative([0,dt*sin-rt*dt*h,-dt*sin+rt*dt*h,0,-dt*cos+rt*dt*w,dt*cos-dt*rt*w,-1,dt-rt*dt*cos*w-rt*dt*sin*h,-dt+rt*dt*cos*w+rt*dt*sin*h,sin*w*rt*dt - h*cos*rt*dt]),np.negative([0,-dt*sin+rt*dt*h,dt*sin-rt*dt*h,0,dt*cos-rt*dt*w,-dt*cos+rt*dt*w,-1,-dt+rt*dt*cos*w+rt*dt*sin*h,dt-rt*dt*cos*w-rt*dt*sin*h,-sin*w*rt*dt + h*cos*rt*dt]),[0,dt*dt*cos-z*dt*dt*h,-dt*dt*cos+z*dt*dt*h,0,dt*dt*sin+z*dt*dt*w,-dt*dt*sin-dt*dt*w*z,0,-z*dt*dt*cos*w-z*dt*dt*sin*h,z*dt*dt*cos*w+z*dt*dt*sin*h,dt*dt+z*dt*dt*sin*w-z*h*cos*dt*dt]]
+    H = [[0,0,mu1,0],[-dt,0,0,0],[dt,0,0,0],[0,0,0,mu2],[0,-dt,0,0],[0,dt,0,0],[0,0,0,0],np.negative([0,0,-dt*cos-rt*dt*x5,dt*sin+dt*rt*x7]),np.negative([0,0,dt*cos+rt*dt*x5,-dt*sin-dt*rt*x7]),[0,0,dt*dt*sin-dt*dt*x5*z,dt*dt*cos+dt*dt*x7*z ]]    
+
